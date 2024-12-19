@@ -58,7 +58,7 @@ def main():
     )
 
     empirical_correlations = np.zeros(len(lags))
-    CALCULATION_METHOD = 0 # Set to One for one point calculation of Rx(m)
+    CALCULATION_METHOD = 1 # Set to One for one point calculation of Rx(m)
     for trial in range(NUM_TRIALS):
         x_n = generate_x_n(NUMBER_OF_SAMPLES)
         for i, lag in enumerate(lags):
@@ -75,10 +75,13 @@ def main():
     plot_empirical_and_theoretical(theoretical_correlations, empirical_correlations, lags)
 
     print("\nNumerical Results:")
-    for i, lag in enumerate(lags):
-        print(f"Lag {lag}:")
-        print(f"  Theoretical: {theoretical_correlations[i]:.4f}")
-        print(f"  Empirical  : {empirical_correlations[i]:.4f}")
+    print("Lag".ljust(8) + "Theoretical".ljust(15) + "Empirical".ljust(15))  # Headers
+    print("-" * 38)  # Separator line for visual clarity
+
+    for i, lag in enumerate(lags[17:24]):
+        print(f"{lag:3d}".ljust(8) +
+              f"{theoretical_correlations[i+17]:8.4f}".ljust(15) +
+              f"{empirical_correlations[i+17]:8.4f}".ljust(15))
 
 if __name__ == '__main__':
     main()
