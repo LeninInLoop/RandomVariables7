@@ -75,9 +75,8 @@ def main():
     plot_empirical_and_theoretical(theoretical_correlations, empirical_correlations, lags)
 
     print("\nNumerical Results:")
-    print("Lag".ljust(8) + "Theoretical".ljust(15) + "Empirical".ljust(15))  # Headers
-    print("-" * 38)  # Separator line for visual clarity
-
+    print("Lag".ljust(8) + "Theoretical".ljust(15) + "Empirical".ljust(15))
+    print("-" * 38)
     for i, lag in enumerate(lags[17:24]):
         print(f"{lag:3d}".ljust(8) +
               f"{theoretical_correlations[i+17]:8.4f}".ljust(15) +
